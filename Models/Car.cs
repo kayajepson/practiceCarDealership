@@ -1,50 +1,62 @@
-using System;
+// using System;
+//
+// namespace Dealership {
+//
+//   class Car
+//   {
+//     private string MakeModel;
+//     private int Price;
+//     private int Miles;
+//     private string Color;
+//
+//     public Car(string makeModel, int price, int miles, string color)
+//     {
+//       MakeModel = makeModel;
+//       Price = price;
+//       Miles = miles;
+//       Color = color;
+//     }
+//
 
-namespace Dealership {
 
-  class Car
+using System.Collections.Generic;
+
+namespace CarDealership.Models
+{
+  public class Car
   {
-    private string MakeModel;
-    private int Price;
-    private int Miles;
-    private string Color;
+    private string _makeModel;
+    private int _price;
+    private int _mileage;
+    private string _color;
 
-    public Car(string makeModel, int price, int miles, string color)
-    {
-      MakeModel = makeModel;
-      Price = price;
-      Miles = miles;
-      Color = color;
-    }
+    private static List<Car> _instances = new List<Car> {};
 
-    public string GetMakeModel()
+    public Car (string makeModel, int mileage, int price, string color)
     {
-      return MakeModel;
-    }
+      _makeModel = makeModel;
+      _price = price;
+      _mileage = mileage;
+      _color = color;
+      _instances.Add(this);
 
-    public int GetPrice()
-    {
-      return Price;
     }
 
-    public int GetMiles()
+    public string makeModel { get => _makeModel; set => _makeModel = value;}
+    public int price { get => _price; set => _price = value;}
+    public int mileage { get => _mileage; set => _mileage = mileage;}
+    public string color { get => _color; set => _color = color;}
+
+
+    public static List<Car> GetAll()
     {
-      return Miles;
+      return _instances;
     }
 
-    public string GetColor()
+    public static void ClearAll()
     {
-      return Color;
+      _instances.Clear();
     }
 
-    public bool WorthBuying(int maxPrice)
-    {
-      return (Price <= maxPrice);
-    }
-    public bool WorthMiles(int maxMiles)
-    {
-      return (Miles <= maxMiles);
-    }
   }
-
 }

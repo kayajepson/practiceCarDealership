@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+  <link href="~/css/site.css" rel="stylesheet" type="text/css" />
+  <title>CAR INVENTORY</title>
+</head>
+<body>
+      @using CarDealership.Models;
+
+      <h1>Car Inventory</h1>
+      <ul>
+
+        @if (Model.Count == 0)
+        {
+          <p>You have no cars in your inventory!</p>
+        }
+        @if(Model.Count != 0)
+        {
+          @foreach (Car car in Model)
+          {
+            <li>@car.makeModel</li>
+            <ul>
+              <li>@car.mileage Miles</li>
+              <li>@car.price USD</li>
+              <li>@car.color</li>
+            </ul>
+          }
+        }
+
+      </ul>
+      <a href="/cars/new">Add a new car.</a>
+
+</body>
+</html>
